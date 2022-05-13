@@ -1,0 +1,189 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+/*
+*********************
+** TAILWIND EXTRA ***
+*********************
+*/
+
+
+/*
+*********************
+****** LAYOUT *******
+*********************
+*/
+.panel
+{
+    @apply absolute right-0 top-0 mr-6 mt-4
+}
+.imgLogo
+{
+    @apply max-w-sm w-max mt-8 mb-12
+}
+.menu_admin
+{
+    @apply text-center block border bg-indigo-50 border-white rounded hover:border-sky-600 hover:bg-sky-600 hover:text-white py-5 px-2
+}
+.menu_user
+{
+    @apply text-center block border bg-green-50 border-white rounded hover:border-green-600 hover:bg-green-600 hover:text-white py-5 px-2
+}
+.footer_admin
+{
+    @apply w-full h-24 bg-sky-600 text-white
+}
+.footer_user
+{
+    @apply w-full h-24 bg-green-600 text-white
+}
+
+
+/*
+*********************
+******* INDEX *******
+*********************
+*/
+
+
+/*
+*********************
+***** TERAPIAS ******
+*********************
+*/
+/* Animacion texto */
+
+/*LEFT TO CENTER*/
+@keyframes animatedtextL
+{
+    0%      { opacity: 0;
+            transform: translateX(-40px);}
+    100%    { opacity: 1;
+             transform: translateX(0px); }
+}
+.animatedL
+{
+animation: animatedtextL 1.5s;
+}
+/*UP TO CENTER*/
+@keyframes animatedtextU
+{
+    0%      { opacity: 0;
+            transform: translateY(-40px);}
+    100%    { opacity: 1;
+             transform: translateY(0px); }
+}
+.animatedU
+{
+animation: animatedtextU 1.5s;
+}
+/*RIGHT TO CENTER*/
+@keyframes animatedtextR
+{
+    0%      { opacity: 0;
+            transform: translateX(+40px);}
+    100%    { opacity: 1;
+             transform: translateX(0px); }
+}
+.animatedR
+{
+animation: animatedtextR 1.5s;
+}
+/*DOWN TO CENTER*/
+@keyframes animatedtextD
+{
+    0%      { opacity: 0;
+            transform: translateY(+40px);}
+    100%    { opacity: 1;
+             transform: translateY(0px); }
+}
+.animatedD
+{
+animation: animatedtextD 1.5s;
+}
+
+
+/*
+*********************
+****** CRUD'S *******
+*********************
+*/
+
+/* Bases */
+h1
+{
+    @apply text-3xl mb-3 text-center
+}
+/* Tablas */
+.table
+{
+    @apply table-auto w-full
+}
+.table th{
+
+    @apply px-5 py-2 bg-gray-50 font-medium text-gray-500 uppercase border leading-6 -tracking-tighter
+}
+.table tr
+{
+    @apply border text-center
+}
+.table td
+{
+    @apply px-5 py-4 whitespace-normal
+}
+/* Formulario */
+.form-control
+{
+    @apply block rounded-sm shadow-sm w-full
+}
+label
+{
+    @apply mt-3 block
+}
+/* Botones */
+.btn{
+    @apply border rounded px-3 py-2 text-white font-bold inline-block transition-all
+}
+.btn-danger
+{
+    @apply bg-red-600 hover:bg-red-800 border-red-600
+}
+.btn-success
+{
+    @apply bg-green-600 hover:bg-green-800 border-green-600
+}
+.btn-primary
+{
+    @apply bg-blue-600 hover:bg-blue-800 border-blue-600
+}
+.btn-warning
+{
+    @apply bg-yellow-500 hover:bg-yellow-700 border-yellow-500
+}
+/* Cartas */
+.card
+{
+    @apply p-6 rounded shadow-sm
+}
+.card-white
+{
+    @apply bg-white
+}
+
+
+/*
+*********************
+***** Contacto ******
+*********************
+*/
+.map-responsive
+{
+    @apply mt-8 overflow-hidden relative h-0 border mx-4 my-3;
+    padding-bottom:56.25%;
+}
+.map-responsive iframe
+{
+    @apply left-0 top-0 h-full w-full absolute
+}
