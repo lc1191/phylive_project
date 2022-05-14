@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 //Clases Laravel
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-
 //Clases proyecto;
 use App\Models\Cesta;
 
@@ -32,7 +29,6 @@ class CestaController extends Controller
      */
     public function show(Cesta $cesta)
     {
-        //dd($cesta);
         return view("dashboard.cesta.show", compact('cesta'));
     }
 
@@ -58,7 +54,6 @@ class CestaController extends Controller
     {
         $data = $request->validated();
         $cesta->update($data);
-        //$request->session()->flash('status', 'Registro actualizado.');
         return to_route("cesta.index")->with('status', 'Registro actualizado.');
     }
 
@@ -73,6 +68,4 @@ class CestaController extends Controller
         $cesta->delete();
         return to_route("cesta.index")->with('status', 'Registro eliminado.');
     }
-
-
 }

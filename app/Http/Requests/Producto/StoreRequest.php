@@ -6,10 +6,10 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
 {
-
     static public function myRules()
     {
-        return[
+        return
+        [
         "title" => "required|min:4",
         "description" => "required|min:6",
         "price" => "required|min:1|max:9",
@@ -17,7 +17,6 @@ class StoreRequest extends FormRequest
         "image" => "mimes:jpeg,jpg,png|max:10240"
         ];
     }
-
 
     /**
      * Determine if the user is authorized to make this request.

@@ -41,10 +41,6 @@
         <td>{{$cesta->total_price}},00 €</td>
     </tr>
     <tr>
-        <td>ID Producto</td>
-        <td>{{$cesta->product_id}}</td>
-    </tr>
-    <tr>
         <td>Producto</td>
         <td>{{$cesta->product_name}}</td>
     </tr>

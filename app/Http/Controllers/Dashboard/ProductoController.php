@@ -3,10 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 //Clases Laravel
 use App\Http\Controllers\Controller;
-// use Illuminate\Support\Facades\Validator;
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Str;
-
 //Clases proyecto
 use App\Http\Requests\Producto\PutRequest;
 use App\Http\Requests\Producto\StoreRequest;
@@ -67,7 +63,6 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-        //dd($producto);
         return view("dashboard.producto.show", compact('producto'));
     }
 
@@ -100,7 +95,6 @@ class ProductoController extends Controller
         }
 
         $producto->update($data);
-        //$request->session()->flash('status', 'Registro actualizado.');
         return to_route("producto.index")->with('status', 'Registro actualizado.');
     }
 

@@ -31,7 +31,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //dd($user);
         return view("dashboard.user.show", compact('user'));
     }
 
@@ -57,8 +56,6 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $user->update($data);
-
-        //$request->session()->flash('status', 'Registro actualizado.');
         return to_route("user.index")->with('status', 'Registro actualizado.');
     }
 
@@ -73,6 +70,4 @@ class UserController extends Controller
         $user->delete();
         return to_route("user.index")->with('status', 'Registro eliminado.');
     }
-
-
 }

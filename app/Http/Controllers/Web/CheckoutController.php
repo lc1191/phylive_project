@@ -19,6 +19,7 @@ class CheckoutController extends Controller
 
     public function form(Request $request)
     {
+        info($request);
         // Cancelar compra
        if ($request->input('cancel') === 'CANCELAR'){
            info('Has cancelado la operacion');
@@ -27,8 +28,6 @@ class CheckoutController extends Controller
        // Confirmar compra
        if ($request->input('proceed') === 'PROCEDER'){
             info('Has procesado la  operacion');
-
-            info($request);
 
             $cartItems = \Cart::getContent();
             $user_id = auth()->id();
@@ -50,7 +49,7 @@ class CheckoutController extends Controller
                     'user_id' => $user_id,
                     'user_name' => $user_name,
                     'total_price' => $i_price * $i_quantity,
-                    'product_id' => $i_id,
+                    // 'product_id' => $i_id,
                     'product_name' => $i_name,
                     'quantity' => $i_quantity,
                     'price' => $i_price,
@@ -72,7 +71,7 @@ class CheckoutController extends Controller
                 // Unidades existentes de productos en la BD
                 $p = Producto::select('quantity')->where('id', $i_id)->get();
                 $p_quantity = $p->implode('quantity',',');
-                info('La cantidad de ese producto en la BD son : '. $p_quantity);
+                //info('La cantidad de ese producto en la BD son : '. $p_quantity);
 
                 // Cantidad restante
                 if($p_quantity>=0){
@@ -88,7 +87,7 @@ class CheckoutController extends Controller
             else if ($i_name == 'ortopedica' || $i_name == 'traumatologica'
                 || $i_name == 'deportiva' || $i_name == 'geriatrica'
                 || $i_name == 'neurologica'){
-                info('Entra en TRUE ' . $i_name);
+                //info('Entra en TRUE ' . $i_name);
                 // Variables para citas
                 $price = 25;
                 $quantity = 1;
@@ -98,8 +97,8 @@ class CheckoutController extends Controller
                     'user_id' => $user_id,
                     'user_name' => $user_name,
                     'total_price' => $price,
-                    'product_id' => $i_id,
-                    'product_name' => $request->title,
+                    // 'product_id' => $i_id,
+                    'product_name' => $i_name,
                     'quantity' => $quantity,
                     'price' => $price,
 
@@ -119,11 +118,10 @@ class CheckoutController extends Controller
             }
             }
             // Reglas de validación
-            //request()->validate(Cesta::$rules);
+            request()->validate(Cesta::$rules);
 
             \Cart::clear();
             return view('web.finishCheckout');
        }
-
     }
 }

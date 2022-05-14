@@ -14,11 +14,10 @@ use App\Htpp\Controllers\Web\CartController;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes ADMIN
 |--------------------------------------------------------------------------
 |
 */
-//Rutas para administrador
 Route::group(['prefix' => '/panel', 'middleware' => ['auth', 'admin']], function() {
     //Ruta Vista administrador
     Route::view('/', 'dashboard.admin.index')->name('inicio');
@@ -31,8 +30,12 @@ Route::group(['prefix' => '/panel', 'middleware' => ['auth', 'admin']], function
     //Ruta Panel administrador citas
     Route::resource('cita', CitaController::class)->parameters(['cita'=>'cita']);
 });
-
-//Rutas para usuarios regulares
+/*
+|--------------------------------------------------------------------------
+| Web Routes USUARIOS
+|--------------------------------------------------------------------------
+|
+*/
 Route::group(['prefix' => '/', 'middleware' => ['auth', 'regular']], function (){
     //Ruta principal
     Route::view('/', 'web.index')->name('inicio');

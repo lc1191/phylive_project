@@ -39,13 +39,8 @@ class Cesta extends Model
             'street' => "required|min:3",
             'city' => "required|min:3",
             'province' => "required",
-            'zip' => "required|min:6",
-            'phone' => "min:9",
+            'zip' => "required|min:5",
+            'phone' => "required|min:9",
             'pay' => "required",
-            'card_number' => "min:16|max:16",
-            'card_ex_month' => "min:2|max:2",
-            'card_ex_year' => "min:2|max:2",
-            'card_ccv' => "min:3|max:3",
-            'card_title' => "min:8"
         ];
 }

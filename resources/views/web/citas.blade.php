@@ -27,7 +27,7 @@
                     <!--ID-->
                     <div class="form-group d-none">
                         <label for="id">ID:</label>
-                        <input type="text" class="form-control" name="id" id="id">
+                        <input type="text" class="form-control" name="id" id="id" value="100">
                     </div>
 
                     <!--Terapias-->

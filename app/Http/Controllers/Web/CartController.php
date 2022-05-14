@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Producto;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -75,7 +75,6 @@ class CartController extends Controller
     {
         \Cart::remove($request->id);
         session()->flash('success', 'Producto eliminado');
-
         return redirect()->route('cart.list');
     }
 
@@ -83,7 +82,6 @@ class CartController extends Controller
     {
         \Cart::clear();
         session()->flash('success', 'Cesta eliminada');
-
         return redirect()->route('cart.list');
     }
 }

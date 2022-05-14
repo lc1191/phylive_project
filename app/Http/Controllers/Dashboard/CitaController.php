@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 //Clases Laravel
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 //Clases proyecto;
 use App\Models\Cita;
 
@@ -30,7 +29,6 @@ class CitaController extends Controller
      */
     public function show(Cita $cita)
     {
-        //dd($cita);
         return view("dashboard.cita.show", compact('cita'));
     }
 
@@ -56,8 +54,6 @@ class CitaController extends Controller
     {
         $data = $request->validated();
         $cita->update($data);
-
-        //$request->session()->flash('status', 'Registro actualizado.');
         return to_route("cita.index")->with('status', 'Registro actualizado.');
     }
 

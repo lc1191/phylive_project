@@ -18,7 +18,7 @@ class CitasController extends Controller
      */
     public function index()
     {
-        return view('web.citas');
+       return view('web.citas');
     }
 
     /**
@@ -37,43 +37,7 @@ class CitasController extends Controller
         $date_user = new Collection ([$request->start]);
         $hour_user = new Collection ([$request->end]);
 
-        // FULL DATE TEST
-        // El usuario logeado no puede cojer el mismo dia si ya tiene citas
-
-        // $dates = DB::table('citas')->where('user_id', auth()->id())->pluck('start');
-        // info('--------------------------------------------');
-        // info('Fecha BD : ' . $dates);
-        // info('Fecha SELECCIONADA USUARIO : ' . $date_user);
-
-        // $dt = $dates->diff($date_user);
-        // if ($dt != $dates){
-        //     info('Existe esa fecha en la BD');
-        // } else {
-        //     info('No existe esa fecha en la BD');
-        // }
-        // info('--------------------------------------------');
-
-
-        // FULL HOUR TEST
-        // El usuario logeado no puede cojer dos horas iguales en toda la BD
-
-        // $hours = DB::table('citas')->where('user_id', auth()->id())->pluck('end');
-        // info('--------------------------------------------');
-        // info('Horas BD : ' . $hours);
-        // info('Hora SELECCIONADA USUARIO : ' . $hour_user);
-
-        // $hs = $hours->diff($hour_user);
-        // if ($hs != $hours){
-        //     info('Existe esa hora en la BD');
-        // } else {
-        //     info('No existe esa hora en la BD');
-        // }
-        // info('--------------------------------------------');
-
-
-        // FULL OF FULL
-        // Cualquier usuario
-
+        // Todos los usuarios
         $dt = DB::table('citas')->pluck('start');
         $hs = DB::table('citas')->where('start', $request->start)->pluck('end');
         // info('--------------------------------------------');
@@ -85,6 +49,11 @@ class CitasController extends Controller
 
         $dt_total = $dt->diff($date_user);
         $h_total = $hs->diff($hour_user);
+
+        // Valores estandar
+        $price = 25;
+        $quantity = 1;
+        $img_cita = 'img_cita.jpg';
 
         //test dia
         if ($dt_total != $dt && $h_total == $hs){
@@ -98,6 +67,17 @@ class CitasController extends Controller
                 'end' => $request->end,
             ]);
 
+            \Cart::add([
+            'id' => $request->id,
+            'name' => $request->title,
+            'price' => $price,
+            'quantity' => $quantity,
+            'image' => $img_cita,
+            ]);
+
+
+            return redirect()->route('cart.list');
+
         } elseif ($dt_total == $dt) {
             // info('No existe esa fecha en la BD, LA CREAMOS');
             $cita =  Cita::create([
@@ -108,24 +88,37 @@ class CitasController extends Controller
                 'start' => $request->start,
                 'end' => $request->end,
             ]);
-        }
 
-        else {
-            info('No se puede crear cita');
-        }
-
-        // // Variables para citas
-        $price = 25;
-        $quantity = 1;
-        $img_cita = 'img_cita.jpg';
-        // Crear en el carrito
-        \Cart::add([
+            \Cart::add([
             'id' => $request->id,
             'name' => $request->title,
             'price' => $price,
             'quantity' => $quantity,
             'image' => $img_cita,
-        ]);
+            ]);
+
+            return redirect()->route('cart.list');
+
+
+        } else {
+            info('No se puede crear cita');
+            session()->flash('error', 'Cita no disponible');
+        }
+
+        // // Variables para citas
+        // $price = 25;
+        // $quantity = 1;
+        // $img_cita = 'img_cita.jpg';
+        // Crear en el carrito
+        // \Cart::add
+        // ([
+        //     'id' => $request->id,
+        //     'name' => $request->title,
+        //     'price' => $price,
+        //     'quantity' => $quantity,
+        //     'image' => $img_cita,
+        // ]);
+
 
         request()->validate(Cita::$rules);
     }
