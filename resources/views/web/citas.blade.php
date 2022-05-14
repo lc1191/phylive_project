@@ -5,6 +5,18 @@
 @endsection
 
 @section('content')
+
+    @if ($message = Session::get('success'))
+        <div class="p-4 mb-3 bg-green-600 rounded">
+            <p class="text-white text-center">{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('error'))
+        <div class="p-4 mb-3 bg-red-600 rounded">
+            <p class="text-white text-center">{{ $message }}</p>
+        </div>
+    @endif
+
 <div class="container">
     <div id="agenda"></div>
 </div>
@@ -80,6 +92,9 @@
                         <div class="form-group">
                             <label for="end">Hora</label>
                             {{-- <input type="time" class="form-control" name="end" id="end" aria-describedby="helpId"> --}}
+                            @if ()
+
+                            @endif
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="end" id="16" value="16"
                                 aria-describedby="helpId">

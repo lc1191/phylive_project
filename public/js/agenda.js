@@ -31,26 +31,6 @@
         displayEventTime:false,
         firstDay: 1,
 
-        //TEST LC para identificar tooltip
-
-        // eventDidMount: function(info) {
-        //     var tooltip = new Tooltip(info.el, {
-        //         title: info.event.extendedProps.description,
-        //         placement: 'top',
-        //         trigger: 'hover',
-        //         container: 'body'
-        //     });
-        //     console.log(info.event.extendedProps);
-        // },
-        // eventRender: function(info) {
-        //     var tooltip = new Tooltip(info.el, {
-        //         title: info.event.extendedProps.description,
-        //         placement: 'top',
-        //         trigger: 'hover',
-        //         container: 'body'
-        //     });
-        // },
-
         eventSources: [{
             url: baseURL+"/cita/mostrar",
             method:"POST",
@@ -58,20 +38,6 @@
                 _token: formulario._token.value,
             },
         }],
-
-
-        eventMouseover:function(data, event, view) {
-                var content =
-                '<p>'+data.description +'<p>'+
-                '<h3>'+data.title+'</h3>' +
-                    '<p><b>Start:</b> '+data.start+'<br />' +
-                    (data.end && '<p><b>End:</b> '+data.end+'</p>' || '');
-
-                tooltip.set({
-                    'content.text': content
-                })
-                .reposition(event).show(event);
-            },
 
         dateClick:function(info){
             $('#btnGuardar').prop("disabled",false);

@@ -18,7 +18,7 @@ class CitasController extends Controller
      */
     public function index()
     {
-       return view('web.citas');
+        return view('web.citas');
     }
 
     /**
@@ -75,9 +75,6 @@ class CitasController extends Controller
             'image' => $img_cita,
             ]);
 
-
-            return redirect()->route('cart.list');
-
         } elseif ($dt_total == $dt) {
             // info('No existe esa fecha en la BD, LA CREAMOS');
             $cita =  Cita::create([
@@ -97,12 +94,12 @@ class CitasController extends Controller
             'image' => $img_cita,
             ]);
 
-            return redirect()->route('cart.list');
-
+            // session()->flash('success', 'Producto añadido');
+            // return redirect()->route('cart.list');
 
         } else {
             info('No se puede crear cita');
-            session()->flash('error', 'Cita no disponible');
+            $error = true;
         }
 
         // // Variables para citas
@@ -118,7 +115,6 @@ class CitasController extends Controller
         //     'quantity' => $quantity,
         //     'image' => $img_cita,
         // ]);
-
 
         request()->validate(Cita::$rules);
     }
