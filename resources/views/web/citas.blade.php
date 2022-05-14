@@ -92,9 +92,7 @@
                         <div class="form-group">
                             <label for="end">Hora</label>
                             {{-- <input type="time" class="form-control" name="end" id="end" aria-describedby="helpId"> --}}
-                            @if ()
 
-                            @endif
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="end" id="16" value="16"
                                 aria-describedby="helpId">
