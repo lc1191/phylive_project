@@ -13,10 +13,6 @@
         <td>{{$cesta->user_name}}</td>
     </tr>
     <tr>
-        <td>Apellidos</td>
-        <td>{{$cesta->last_name}}</td>
-    </tr>
-    <tr>
         <td>Dirección</td>
         <td>{{$cesta->street}}</td>
     </tr>

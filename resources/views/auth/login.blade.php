@@ -2,9 +2,11 @@
     <x-auth-card>
         <x-slot name="logo">
             <img src="{{ asset('img/logo.png') }}" class="imgLogo">
+            <div class="text-center">
             <x-button>
                 <a href="{{ route('register') }}">{{ __('Registrar') }}</a>
             </x-button>
+            </div>
         </x-slot>
 
         <!-- Session Status -->

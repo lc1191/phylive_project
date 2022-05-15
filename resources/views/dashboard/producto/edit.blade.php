@@ -7,8 +7,8 @@
 @section('content')
 
     <a class="btn btn-info my-3" href="{{route("producto.index")}} ">Panel</a>
-    <h1>Actualizar Producto: {{ $producto->name }}</h1>
-    
+    <h1>Actualizar Producto: {{ $producto->title }}</h1>
+
     @include('dashboard.fragment._errors-form')
 
     <form action="{{ route('producto.update', $producto->id) }}" method="post" enctype="multipart/form-data">

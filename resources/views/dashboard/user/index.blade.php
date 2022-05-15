@@ -26,7 +26,6 @@
                     <td>
                         <form action="{{ route('user.destroy', $u) }}" method="post">
                             <a class="btn btn-primary my-1" href="{{ route('user.show', $u) }}">Mostrar</a>
-                            <a class="btn btn-warning my-1" href="{{ route('user.edit', $u) }}">Editar</a>
                                 @method("delete")
                                 @csrf
                             <button class="btn btn-danger my-1" type="submit">Eliminar</button>

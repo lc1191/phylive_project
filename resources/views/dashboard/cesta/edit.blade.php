@@ -8,7 +8,7 @@
 
     <form action="{{ route('cesta.update', $cesta->id) }}" method="post" enctype="multipart/form-data">
         @method("patch")
-        @include('dashboard.cesta._form', ["task" => "edit"])
+        @include('dashboard.cesta._form')
     </form>
 
 @endsection
