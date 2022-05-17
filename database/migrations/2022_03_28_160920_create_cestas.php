@@ -27,10 +27,6 @@ return new class extends Migration
                 ->references('id')
                 ->on('users');
 
-            // $table->foreignId('product_id')
-            //     ->references('id')
-            //     ->on('productos');
-
             $table->string('street', 100);
             $table->string('city', 100);
             $table->string('province', 255);

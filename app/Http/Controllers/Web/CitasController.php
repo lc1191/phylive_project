@@ -50,10 +50,10 @@ class CitasController extends Controller
         $dt_total = $dt->diff($date_user);
         $h_total = $hs->diff($hour_user);
 
-        // Valores estandar
-        $price = 25;
-        $quantity = 1;
-        $img_cita = 'img_cita.jpg';
+        // Valores estandar para cesta
+        // $price = 25;
+        // $quantity = 1;
+        // $img_cita = 'img_cita.jpg';
 
         //test dia
         if ($dt_total != $dt && $h_total == $hs){
@@ -67,13 +67,13 @@ class CitasController extends Controller
                 'end' => $request->end,
             ]);
 
-            \Cart::add([
-            'id' => $request->id,
-            'name' => $request->title,
-            'price' => $price,
-            'quantity' => $quantity,
-            'image' => $img_cita,
-            ]);
+            // \Cart::add([
+            // 'id' => $request->id,
+            // 'name' => $request->title,
+            // 'price' => $price,
+            // 'quantity' => $quantity,
+            // 'image' => $img_cita,
+            // ]);
 
         } elseif ($dt_total == $dt) {
             // info('No existe esa fecha en la BD, LA CREAMOS');
@@ -86,13 +86,13 @@ class CitasController extends Controller
                 'end' => $request->end,
             ]);
 
-            \Cart::add([
-            'id' => $request->id,
-            'name' => $request->title,
-            'price' => $price,
-            'quantity' => $quantity,
-            'image' => $img_cita,
-            ]);
+            // \Cart::add([
+            // 'id' => $request->id,
+            // 'name' => $request->title,
+            // 'price' => $price,
+            // 'quantity' => $quantity,
+            // 'image' => $img_cita,
+            // ]);
 
             // session()->flash('success', 'Producto añadido');
             // return redirect()->route('cart.list');
@@ -101,20 +101,6 @@ class CitasController extends Controller
             info('No se puede crear cita');
             $error = true;
         }
-
-        // // Variables para citas
-        // $price = 25;
-        // $quantity = 1;
-        // $img_cita = 'img_cita.jpg';
-        // Crear en el carrito
-        // \Cart::add
-        // ([
-        //     'id' => $request->id,
-        //     'name' => $request->title,
-        //     'price' => $price,
-        //     'quantity' => $quantity,
-        //     'image' => $img_cita,
-        // ]);
 
         request()->validate(Cita::$rules);
     }
