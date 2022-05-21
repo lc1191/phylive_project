@@ -16,7 +16,7 @@
     <div class="flex flex-col justify-between h-screen">
     <!-- Header -->
     <header>
-        <div class="bg-gradient-to-r from-blue-500 to-green-500 flex justify-center">
+        <div class="bg-gradient-to-tl from-blue-500 to-green-500 flex justify-center">
             <a href="{{URL::to('/')}}"><img src="{{ asset('img/logo2.png') }}" class="imgLogo">
         </div>
         <!-- Panel Usuario -->
@@ -76,7 +76,7 @@
 
     <!-- Footer -->
     <footer class="footer_user">
-        <div class="h-24  bg-gradient-to-r from-blue-500 to-green-500 flex basis-full">
+        <div class="h-24 bg-gradient-to-br from-blue-500 to-green-500 flex basis-full">
             <!-- Marca -->
             <div class="mt-3 pl-8 grow">
                 &#169; 2022 PHYLIVE <br/> Diseñado por Luis Carlos Sánchez Núñez
