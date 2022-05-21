@@ -61,12 +61,12 @@ class CartController extends Controller
                 ]
             );
             //info('Stock del producto con id ' . $p_id . ' quedan ' . $q_producto . ' unidades');
-            session()->flash('success', 'Cesta actualizada');
+            session()->flash('success', 'Articulo actualizado');
         }
 
         else if ($quantity > $qt || $quantity <= 0){
             //info('Cantidad introducida ('.$quantity.') no disponible para producto con id ' . $p_id);
-            session()->flash('error', 'Cesta no actualizada');
+            session()->flash('error', 'Articulo no actualizada');
         }
         return redirect()->route('cart.list');
     }
@@ -74,14 +74,14 @@ class CartController extends Controller
     public function removeCart(Request $request)
     {
         \Cart::remove($request->id);
-        session()->flash('success', 'Producto eliminado');
+        session()->flash('error', 'Articulo eliminado');
         return redirect()->route('cart.list');
     }
 
     public function clearAllCart()
     {
         \Cart::clear();
-        session()->flash('success', 'Cesta eliminada');
+        session()->flash('error', 'Cesta eliminada');
         return redirect()->route('cart.list');
     }
 }

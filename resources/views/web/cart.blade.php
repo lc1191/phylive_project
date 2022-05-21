@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<main class="my-8">
+<main class="my-8 animatedU">
     <div class="container px-6 mx-auto">
         <div class="flex justify-center my-6">
             <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -52,7 +52,7 @@
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $item->id}}">
                                             <input type="number" name="quantity" value="{{ $item->quantity }}" class="w-50 text-center bg-gray-100" />
-                                            <button type="submit" class="btn btn-primary mb-1">ACT</button>
+                                            <button type="submit" class="btn bg-blue-600 mb-1">ACT</button>
                                         </form>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                 <form action="{{ route('cart.remove') }}" method="POST">
                                     @csrf
                                     <input type="hidden" value="{{ $item->id }}" name="id">
-                                    <button class="btn btn-danger">X</button>
+                                    <button class="btn bg-red-600">X</button>
                                 </form>
                             </td>
                         </tr>
@@ -75,14 +75,14 @@
                         <div class="text-right mt-4">
                             <form action="{{ route('cart.clear') }}" method="POST">
                                 @csrf
-                                <button class="px-6 py-2 text-white bg-danger">Eliminar cesta</button>
+                                <button class="px-6 py-2 text-white bg-red-600">Eliminar cesta</button>
                             </form>
                         </div>
                         {{-- Boton para checkout --}}
                         <div class="text-center">
                             <form action="{{ route('checkout') }}" method="POST">
                                 @csrf
-                                <button class="px-6 py-2 rounded text-white bg-primary">Finalizar Compra</button>
+                                <button class="px-6 py-2 rounded text-white bg-blue-600">Finalizar Compra</button>
                             </form>
                         </div>
                     </div>

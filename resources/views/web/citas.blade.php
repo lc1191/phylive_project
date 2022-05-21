@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layoutAgenda')
 
 @section('title')
     Citas
@@ -17,7 +17,7 @@
         </div>
     @endif
 
-<div class="container">
+<div class="container animatedR">
     <div id="agenda"></div>
 </div>
 

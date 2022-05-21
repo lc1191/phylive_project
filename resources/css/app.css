@@ -21,7 +21,7 @@
 }
 .imgLogo
 {
-    @apply max-w-sm w-max mt-8 mb-12
+    @apply max-w-sm w-max mt-9 mb-12
 }
 .menu_admin
 {
@@ -29,7 +29,7 @@
 }
 .menu_user
 {
-    @apply text-center block border bg-green-50 border-white rounded hover:border-green-600 hover:bg-green-600 hover:text-white py-5 px-2
+    @apply text-center block border bg-green-200 border-white rounded hover:border-green-600 hover:bg-green-600 hover:text-white mt-6 py-5 px-4 mx-1
 }
 .footer_admin
 {
@@ -37,7 +37,7 @@
 }
 .footer_user
 {
-    @apply w-full h-24 bg-green-600 text-white
+    @apply w-full text-white
 }
 
 
@@ -180,10 +180,9 @@ label
 */
 .map-responsive
 {
-    @apply mt-8 overflow-hidden relative h-0 border mx-4 my-3;
-    padding-bottom:56.25%;
+    @apply mx-auto
 }
 .map-responsive iframe
 {
-    @apply left-0 top-0 h-full w-full absolute
+    @apply mx-auto w-full h-96
 }

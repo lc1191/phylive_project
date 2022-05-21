@@ -21,8 +21,8 @@ class CheckoutController extends Controller
     {
         info($request);
         // Cancelar compra
-       if ($request->input('cancel') === 'CANCELAR'){
-           info('Has cancelado la operacion');
+        if ($request->input('cancel') === 'CANCELAR'){
+        info('Has cancelado la operacion');
            return redirect()->route('cart.list');
        }
        // Confirmar compra
@@ -84,39 +84,40 @@ class CheckoutController extends Controller
                 }
             }
 
-            else if ($i_name == 'ortopedica' || $i_name == 'traumatologica'
-                || $i_name == 'deportiva' || $i_name == 'geriatrica'
-                || $i_name == 'neurologica'){
-                //info('Entra en TRUE ' . $i_name);
-                // Variables para citas
-                $price = 25;
-                $quantity = 1;
-                // Crear en la base de datos de cesta
-                Cesta::create([
-                    'id' => $request->id,
-                    'user_id' => $user_id,
-                    'user_name' => $user_name,
-                    'total_price' => $price,
-                    // 'product_id' => $i_id,
-                    'product_name' => $i_name,
-                    'quantity' => $quantity,
-                    'price' => $price,
+            // else if ($i_name == 'ortopedica' || $i_name == 'traumatologica'
+            //     || $i_name == 'deportiva' || $i_name == 'geriatrica'
+            //     || $i_name == 'neurologica'){
+            //     info('Entra en TRUE ' . $i_name);
+            //     // Variables para citas
+            //     $price = 25;
+            //     $quantity = 1;
+            //     // Crear en la base de datos de cesta
+            //     Cesta::create([
+            //         'id' => $request->id,
+            //         'user_id' => $user_id,
+            //         'user_name' => $user_name,
+            //         'total_price' => $price,
+            //         // 'product_id' => $i_id,
+            //         'product_name' => $i_name,
+            //         'quantity' => $quantity,
+            //         'price' => $price,
 
-                    'street' => $request->street,
-                    'city' => $request->city,
-                    'province' => $request->province,
-                    'zip' => $request->zip,
-                    'phone' => $request->phone,
+            //         'street' => $request->street,
+            //         'city' => $request->city,
+            //         'province' => $request->province,
+            //         'zip' => $request->zip,
+            //         'phone' => $request->phone,
 
-                    'pay' => $request->pay,
-                    'card_number' => $request->card_number,
-                    'card_ex_month' => $request->card_ex_month,
-                    'card_ex_year' => $request->card_ex_year,
-                    'card_ccv' => $request->card_ccv,
-                    'card_title' => $request->card_title
-                ]);
+            //         'pay' => $request->pay,
+            //         'card_number' => $request->card_number,
+            //         'card_ex_month' => $request->card_ex_month,
+            //         'card_ex_year' => $request->card_ex_year,
+            //         'card_ccv' => $request->card_ccv,
+            //         'card_title' => $request->card_title
+            //     ]);
+            // }
             }
-            }
+
             // Reglas de validación
             request()->validate(Cesta::$rules);
 
