@@ -30,8 +30,8 @@ return new class extends Migration
             $table->string('street', 100);
             $table->string('city', 100);
             $table->string('province', 255);
-            $table->string('zip', 5)->nullable();
-            $table->string('phone', 9)->nullable();
+            $table->string('zip', 5);
+            $table->string('phone', 9);
 
             $table->string('pay', 50);
             $table->string('card_number', 16)->nullable();

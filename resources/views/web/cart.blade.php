@@ -26,7 +26,7 @@
                             <tr class="h-12 uppercase">
                                 <th class="hidden md:table-cell"></th>
                                 <th class="text-left">Producto</th>
-                                <th class="text-center lg:text-right lg:pl-0">
+                                <th class="text-center lg:pl-0">
                                     <span class="lg:hidden" title="Quantity">Cantidad</span>
                                     <span class="hidden lg:inline">Cantidad</span>
                                 </th>
@@ -37,29 +37,32 @@
                         {{-- Bucle para mostrar todos los items --}}
                         @foreach ($cartItems as $item)
                         <tr>
-                            {{-- Imagen de producto / cita --}}
+                            {{-- Imagen producto --}}
                             <td class="hidden pb-4 md:table-cell">
                                 <a href="#"><img class="mx-auto w-20 rounded" src="{{Storage::url("image/$item->image")}}"></a>
                             </td>
-                            {{-- Nombre de producto / cita --}}
+                            {{-- Nombre producto --}}
                             <td>
                                 <a href="#"><p class="mb-2 md:ml-2">{{ $item->name }}</p></a>
                             </td>
-                            <td class="ml-12 justify-center mt-6 md:justify-end md:flex">
-                                <div class="h-10 w-100">
+                            {{-- Actualizacion producto --}}
+                            <td class="ml-12 justify-center mt-6 md:flex">
+                                <div class="h-10 w-auto  ">
                                     <div class="relative flex flex-row w-full h-8">
                                         <form action="{{ route('cart.update') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $item->id}}">
-                                            <input type="number" name="quantity" value="{{ $item->quantity }}" class="w-50 text-center bg-gray-100" />
+                                            <input type="number" name="quantity" value="{{ $item->quantity }}" class="w-40 text-center bg-gray-100" />
                                             <button type="submit" class="btn bg-blue-600 mb-1">ACT</button>
                                         </form>
                                     </div>
                                 </div>
                             </td>
+                            {{-- Precio producto --}}
                             <td class="text-center w-25 md:table-cell">
                                 <span class="text-sm font-medium lg:text-base">{{ $item->price }},00 €</span>
                             </td>
+                            {{-- Eliminar producto --}}
                             <td class="text-right md:table-cell">
                                 <form action="{{ route('cart.remove') }}" method="POST">
                                     @csrf
@@ -71,6 +74,7 @@
                         @endforeach
                         </tbody>
                         </table>
+                        {{-- Total y Boton eliminar cesta --}}
                         <div class="font-bold text-right mt-4">Total: {{ Cart::getTotal() }} €</div>
                         <div class="text-right mt-4">
                             <form action="{{ route('cart.clear') }}" method="POST">
@@ -79,7 +83,7 @@
                             </form>
                         </div>
                         {{-- Boton para checkout --}}
-                        <div class="text-center">
+                        <div class="text-center pt-6">
                             <form action="{{ route('checkout') }}" method="POST">
                                 @csrf
                                 <button class="px-6 py-2 rounded text-white bg-blue-600">Finalizar Compra</button>

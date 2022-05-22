@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
+use App\Http\Requests\Checkout\StoreRequest;
 use App\Models\Cesta;
 use App\Models\Producto;
 use Illuminate\Support\Facades\DB;
@@ -17,14 +18,19 @@ class CheckoutController extends Controller
         return view('web.checkout', compact('cartItems'));
     }
 
-    public function form(Request $request)
+    public function form(StoreRequest $request)
     {
         info($request);
+
         // Cancelar compra
         if ($request->input('cancel') === 'CANCELAR'){
         info('Has cancelado la operacion');
            return redirect()->route('cart.list');
        }
+
+        // Reglas de validación
+        $request->validated();
+
        // Confirmar compra
        if ($request->input('proceed') === 'PROCEDER'){
             info('Has procesado la  operacion');
@@ -83,43 +89,7 @@ class CheckoutController extends Controller
                         ->update(['quantity' => DB::raw($ff)]);
                 }
             }
-
-            // else if ($i_name == 'ortopedica' || $i_name == 'traumatologica'
-            //     || $i_name == 'deportiva' || $i_name == 'geriatrica'
-            //     || $i_name == 'neurologica'){
-            //     info('Entra en TRUE ' . $i_name);
-            //     // Variables para citas
-            //     $price = 25;
-            //     $quantity = 1;
-            //     // Crear en la base de datos de cesta
-            //     Cesta::create([
-            //         'id' => $request->id,
-            //         'user_id' => $user_id,
-            //         'user_name' => $user_name,
-            //         'total_price' => $price,
-            //         // 'product_id' => $i_id,
-            //         'product_name' => $i_name,
-            //         'quantity' => $quantity,
-            //         'price' => $price,
-
-            //         'street' => $request->street,
-            //         'city' => $request->city,
-            //         'province' => $request->province,
-            //         'zip' => $request->zip,
-            //         'phone' => $request->phone,
-
-            //         'pay' => $request->pay,
-            //         'card_number' => $request->card_number,
-            //         'card_ex_month' => $request->card_ex_month,
-            //         'card_ex_year' => $request->card_ex_year,
-            //         'card_ccv' => $request->card_ccv,
-            //         'card_title' => $request->card_title
-            //     ]);
-            // }
             }
-
-            // Reglas de validación
-            request()->validate(Cesta::$rules);
 
             \Cart::clear();
             return view('web.finishCheckout');

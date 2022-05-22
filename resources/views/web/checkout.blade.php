@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form action="{{ route('checkout.form') }}" class="credit-card-div" method="post">
+<form action="{{ route('checkout.form') }}" class="credit-card-div" method="post" id="formCheckout">
     @csrf
 <main class="my-8 animatedL">
     <div class="container px-6 mx-auto">
@@ -20,13 +20,13 @@
                             <input type="text" class="form-control" placeholder="" value="{{Auth::user()->last_name}}">
                         </div>
                         <div class="form-group mb-3"> <!-- Dirección -->
-                            <input type="text" class="form-control" id="street1_id" name="street" placeholder="Dirección completa">
+                            <input type="text" class="form-control" id="street1_id" name="street" placeholder="Dirección completa" required>
                         </div>
                         <div class="form-group mb-3"> <!-- Población-->
-                            <input type="text" class="form-control" id="city_id" name="city" placeholder="Población">
+                            <input type="text" class="form-control" id="city_id" name="city" placeholder="Población" required>
                         </div>
                         <div class="form-group mb-3"> <!-- Provincia -->
-                            <select multiple name="province" class="form-control" id="province_id">
+                            <select multiple name="province" class="form-control" id="province_id" required>
                                 <option data-postal="01" value="Alava/Araba" name="alava">Alava/Araba</option>
                                 <option data-postal="02" value="Albacete">Albacete</option>
                                 <option data-postal="03" value="Alicante">Alicante</option>
@@ -82,10 +82,10 @@
                             </select>
                         </div>
                         <div class="form-group mb-3"> <!-- Codigo Postal-->
-                            <input type="text" class="form-control" id="zip_id" name="zip" placeholder="Codigo Postal">
+                            <input type="text" class="form-control" id="zip_id" name="zip" placeholder="Codigo Postal" required>
                         </div>
                         <div class="form-group mb-3"> <!-- Telefono-->
-                            <input type="tel" class="form-control" id="phone_id" name="phone" placeholder="Telefono">
+                            <input type="tel" class="form-control" id="phone_id" name="phone" placeholder="Telefono" required>
                         </div>
                 </div>
             </div>
@@ -95,16 +95,6 @@
     <div class="container px-6 mx-auto">
         <div class="flex justify-center my-6">
             <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
-            @if ($message = Session::get('success'))
-                <div class="p-4 mb-3 bg-green-600 rounded">
-                  <p class="text-white text-center">{{ $message }}</p>
-                </div>
-            @endif
-            @if ($message = Session::get('error'))
-                <div class="p-4 mb-3 bg-red-600 rounded">
-                    <p class="text-white text-center">{{ $message }}</p>
-                </div>
-            @endif
                 <h3 class="text-3xl text-bold mb-4">Datos de cesta</h3>
                     <div class="flex-1">
                         <table class="w-full text-sm lg:text-base" cellspacing="0">
@@ -120,18 +110,18 @@
                         {{-- Bucle para mostrar todos los items --}}
                         @foreach ($cartItems as $item)
                         <tr>
-                            {{-- Imagen de producto / cita --}}
+                            {{-- Imagen de producto --}}
                             <td class="hidden pb-4 md:table-cell">
                                 <a href="#"><img class="mx-auto w-20 rounded" src="{{Storage::url("image/$item->image")}}"></a>
                             </td>
-                            {{-- Nombre de producto / cita --}}
+                            {{-- Nombre de producto --}}
                             <td>
                                 <a href="#"><p class="mb-2 md:ml-2">{{ $item->name }}</p></a>
                             </td>
                             <td class="ml-12 justify-center pt-10 md:justify-end md:flex">
                                 <div class="h-10 w-100">
                                     <div class="relative flex flex-row w-full h-8">
-                                        <span class="w-50 text-center bg-gray-100">{{ $item->quantity }}</span>
+                                        <span class="w-full text-center bg-gray-100">{{ $item->quantity }}</span>
                                     </div>
                                 </div>
                             </td>
@@ -155,43 +145,43 @@
                     <div class="flex-1">
                         <div class="my-2">
                             <input type="radio" class="btn-check" name="pay" id="option1" autocomplete="off" value="Clínica" checked>
-                            <label class="btn btn-primary" for="option1">Pago en clínica</label>
+                            <label class="btn btn-primary" for="option1">Clínica</label>
                         </div>
                         <div class="mb-4">
                             <input type="radio" class="btn-check" name="pay" id="option2" autocomplete="off" value="Tarjeta">
-                            <label class="btn btn-primary" for="option2">Pago en tarjeta</label>
+                            <label class="btn btn-primary" for="option2">Tarjeta</label>
                         </div>
                         <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" name="card_number" placeholder="Introduzca numero de tarjeta" />
-                                </div>
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="card_number" placeholder="Introduzca numero de tarjeta" id="card_number"/>
                             </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <span class="help-block text-muted small-font" > Mes exp.</span>
+                                <input type="text" class="form-control" name="card_ex_month" placeholder="MM" id="card_ex_month" maxlength="5"/>
+                            </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3 mb-3">
+                            <span class="help-block text-muted small-font" > Año exp.</span>
+                            <input type="text" class="form-control" name="card_ex_year" placeholder="YY" id="card_ex_year" maxlength="5"/>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3 mb-3">
+                            <span class="help-block text-muted small-font" > Código CCV</span>
+                            <input type="text" class="form-control" name="card_ccv" placeholder="CCV" id="card_ccv" maxlength="3"/>
+                        </div>
+                        </div>
                             <div class="row mb-3">
-                                <div class="col-md-3 col-sm-3 col-xs-3">
-                                    <span class="help-block text-muted small-font" > Mes exp.</span>
-                                    <input type="text" class="form-control" name="card_ex_month"placeholder="MM" />
+                            <div class="col-md-12 pad-adjust">
+                                <input type="text" class="form-control" name="card_title" placeholder="Titular de tarjeta" id="card_title"/>
                             </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3 mb-3">
-                                <span class="help-block text-muted small-font" > Año exp.</span>
-                                <input type="text" class="form-control" name="card_ex_year"placeholder="YY" />
-                            </div>
-                            <div class="col-md-3 col-sm-3 col-xs-3 mb-3">
-                                <span class="help-block text-muted small-font" > Código CCV</span>
-                                <input type="text" class="form-control" name="card_ccv"placeholder="CCV" />
-                            </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-12 pad-adjust">
-                                    <input type="text" class="form-control" name="card_title" placeholder="Titular de tarjeta" />
-                                </div>
-                            </div>
-                            <div class="row ">
-                                <div class="py-3 col-sm-4 col-xs-1 pad-adjust">
-                                    <input type="submit"  class="px-5 btn btn-danger" name="cancel" value="CANCELAR" />
-                                </div>
+                        </div>
+                        <div class="row">
                             <div class="py-3 col-sm-4 col-xs-1 pad-adjust">
-                                <input type="submit"  class="px-5 btn btn-success btn-block" name="proceed" value="PROCEDER" />
+                                <input type="submit"  class="px-5 btn btn-danger" name="cancel" value="CANCELAR" />
                             </div>
+                        <div class="py-3 col-sm-4 col-xs-1 pad-adjust">
+                            <input type="submit"  class="px-5 btn btn-success btn-block" name="proceed" value="PROCEDER" />
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -199,4 +189,5 @@
         </div>
     </form>
 </main>
+<script src="{{ asset('js/pay.js') }}" defer></script>
 @endsection

@@ -29,18 +29,4 @@ class Cesta extends Model
         'card_title'
     ];
 
-     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public static $rules =
-        [
-            'street' => "required|min:3",
-            'city' => "required|min:3",
-            'province' => "required",
-            'zip' => "required|min:5",
-            'phone' => "required|min:9",
-            'pay' => "required",
-        ];
 }

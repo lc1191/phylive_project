@@ -50,7 +50,7 @@
                 </button>
             @endif
         </div>
-        <nav>
+        <nav class="">
             <ul class="flex mx-6">
                 <li class="flex-1 mt-2"><a class="menu_user" href="{{route('inicio')}}">Inicio</a></li>
                 <li class="flex-1 mt-2"><a class="menu_user" href="{{route('terapias')}}">Terapias</a></li>
