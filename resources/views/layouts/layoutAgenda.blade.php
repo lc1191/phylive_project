@@ -16,8 +16,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
 
-    <!-- Scripts BOOTSTRAP 4-->
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -55,30 +56,30 @@
          <div class="panel">
             @if (Auth::user())
                 {{-- Icono y nombre usuario --}}
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                    <h5 class="text-center mb-3">{{ Auth::user()->name }}</h5>
+                </svg>
+                <h5 class="text-white mb-3 pl-1">{{ Auth::user()->name }}</h5>
 
                 {{-- Icono desconexion --}}
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="red" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13 7a4 4 0 11-8 0 4 4 0 018 0zM9 14a6 6 0 00-6 6v1h12v-1a6 6 0 00-6-6zM21 12h-6" />
                           </svg>
-                          <h5 class="text-center mb-3">Salir</h5>
+                          <h5 class="text-white mb-3 ml-3">Salir</h5>
                     </button>
                 </form>
 
                 {{-- Botón Cesta --}}
                 <button>
                     <a href="{{ route('cart.list') }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-3 h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                           </svg>
                     </a>
-                      {{ Cart::getTotalQuantity()}}
+                    <h5 class="text-white ml-3">{{ Cart::getTotalQuantity()}}</h5>
                 </button>
             @endif
         </div>

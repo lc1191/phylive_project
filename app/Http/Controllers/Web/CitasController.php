@@ -29,6 +29,7 @@ class CitasController extends Controller
      */
     public function store(Request $request)
     {
+        info($request);
         // Comprobacion usuario de sesion
         $user_id = auth()->id();
         $user_name = auth()->user()->name;
@@ -50,11 +51,6 @@ class CitasController extends Controller
         $dt_total = $dt->diff($date_user);
         $h_total = $hs->diff($hour_user);
 
-        // Valores estandar para cesta
-        // $price = 25;
-        // $quantity = 1;
-        // $img_cita = 'img_cita.jpg';
-
         //test dia
         if ($dt_total != $dt && $h_total == $hs){
             // info('Existe esa fecha en la BD');
@@ -67,14 +63,6 @@ class CitasController extends Controller
                 'end' => $request->end,
             ]);
 
-            // \Cart::add([
-            // 'id' => $request->id,
-            // 'name' => $request->title,
-            // 'price' => $price,
-            // 'quantity' => $quantity,
-            // 'image' => $img_cita,
-            // ]);
-
         } elseif ($dt_total == $dt) {
             // info('No existe esa fecha en la BD, LA CREAMOS');
             $cita =  Cita::create([
@@ -86,20 +74,8 @@ class CitasController extends Controller
                 'end' => $request->end,
             ]);
 
-            // \Cart::add([
-            // 'id' => $request->id,
-            // 'name' => $request->title,
-            // 'price' => $price,
-            // 'quantity' => $quantity,
-            // 'image' => $img_cita,
-            // ]);
-
-            // session()->flash('success', 'Producto añadido');
-            // return redirect()->route('cart.list');
-
         } else {
             info('No se puede crear cita');
-            $error = true;
         }
 
         request()->validate(Cita::$rules);

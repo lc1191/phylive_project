@@ -22,12 +22,11 @@
                 <tr>
                     <td>{{ $c->user_id }}</td>
                     <td>{{ $c->id }}</td>
-                    <td>{{ $c->start }}</td>
+                    <td>{{ date('d-m-Y', strtotime($c->start)) }}</td>
                     <td>{{ $c->end }}:00 H</td>
                     <td>
                         <form action="{{ route('cita.destroy', $c) }}" method="post">
                             <a class="btn btn-primary my-1" href="{{ route('cita.show', $c) }}">Mostrar</a>
-                            {{-- <a class="btn btn-warning my-1" href="{{ route('cita.edit', $c) }}">Editar</a> --}}
                                 @method("delete")
                                 @csrf
                             <button class="btn btn-danger my-1" type="submit">Eliminar</button>

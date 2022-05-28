@@ -51,7 +51,7 @@ Route::group(['prefix' => '/', 'middleware' => ['auth', 'regular']], function ()
     Route::post('update-cart', 'App\Http\Controllers\Web\CartController@updateCart')->name('cart.update');
     Route::post('remove', 'App\Http\Controllers\Web\CartController@removeCart')->name('cart.remove');
     Route::post('clear', 'App\Http\Controllers\Web\CartController@clearAllCart')->name('cart.clear');
-    //RutaS checkout
+    //Rutas checkout
     Route::post('/checkout', 'App\Http\Controllers\Web\CheckoutController@index')->name('checkout');
     Route::post('/checkout/form', 'App\Http\Controllers\Web\CheckoutController@form')->name('checkout.form');
     //Rutas cita

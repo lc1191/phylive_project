@@ -21,14 +21,13 @@
         <td>{{$cita->description}}</td>
     </tr>
     <tr>
-        <td>Fecha</td>
-        <td>{{$cita->start}}</td>
+        <td>Hora</td>
+        <td><b>{{$cita->end}}:00 H</b></td>
     </tr>
     <tr>
-        <td>Hora</td>
-        <td>{{$cita->end}}:00H</td>
+        <td>Fecha</td>
+        <td><b>{{date('d-m-Y', strtotime($cita->start))}}</b></td>
     </tr>
-
 </table>
 
     @include('dashboard.fragment._errors-form')

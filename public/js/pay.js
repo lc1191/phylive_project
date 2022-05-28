@@ -1,6 +1,24 @@
+    // Datos de tarjeta
+    listCard = document.getElementById("listAll");
+
+    // Mostrar campos si selecciona tarjeta
+    document.getElementById("option2").addEventListener("click", function(event) {
+        console.log("Has hecho click en tarjeta");
+        listCard.style.visibility = "visible";
+    });
+
+    // Ocultar campos si selecciona clinica
+    document.getElementById("option1").addEventListener("click", function(event) {
+        console.log("Has hecho click en clinica");
+        listCard.style.visibility = "hidden";
+    });
+
     /* Seleccionamos formulario y ponemos a la escucha el evento submit para la funcion
      de validación */
     document.getElementById("formCheckout").addEventListener("submit", function (event) {
+
+        var hasError = false;
+
         // Datos de tarjeta
         card = document.getElementById('option2');
         c1 = document.getElementById('card_number');
@@ -47,10 +65,10 @@
     }
 
     // Si existe algún error no procede el pago
-        if (hasError){
+        if (hasError) {
             event.preventDefault();
         }
-        else{
+        else {
             hasError = false;
         }
     });

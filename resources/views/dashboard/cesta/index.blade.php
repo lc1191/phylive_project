@@ -23,11 +23,10 @@
                     <td>{{ $c->user_id }}</td>
                     <td>{{ $c->id }}</td>
                     <td>{{ $c->total_price }} €</td>
-                    <td>{{ $c->updated_at }}</td>
+                    <td>{{ date('d-m-Y', strtotime($c->updated_at)) }}</td>
                     <td>
                         <form action="{{ route('cesta.destroy', $c) }}" method="post">
                             <a class="btn btn-primary my-1" href="{{ route('cesta.show', $c) }}">Mostrar</a>
-                            {{-- <a class="btn btn-warning my-1" href="{{ route('cesta.edit', $c) }}">Editar</a> --}}
                                 @method("delete")
                                 @csrf
                             <button class="btn btn-danger my-1" type="submit">Eliminar</button>

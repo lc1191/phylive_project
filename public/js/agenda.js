@@ -48,13 +48,9 @@
             formulario.start.value=info.dateStr;
             formulario.end.value=info.dateStr;
             $("#cita").modal("show");
+            // console.log(formulario.start.value);
+            // console.log(formulario.end.value);
         },
-
-    ////
-    //TRAER EL LISTADO DE CADA DIA CON LAS HORAS COJIDAS, (ARRAY)
-    //COMPARAR CADA HORA CON LAS QUE EXISTEN
-    //LLAMDA A GET PARA TRAER ARRAY GLOBAL CON HORAS
-    ////
 
     eventClick:function (info) {
         var cita = info.event;
@@ -62,12 +58,11 @@
         $('#btnGuardar').prop("disabled",true);
         $('#btnModificar').prop("disabled",false);
         $('#btnEliminar').prop("disabled",false);
-        // console.log(cita);
 
         /*
         * Consultar datos
         */
-       axios.post(baseURL+"/cita/editar/" + info.event.id).
+       axios.post(baseURL+"/cita/editar/" + info.event.id)
        then(
            (respuesta) => {
                formulario.id.value = respuesta.data.id;
@@ -80,8 +75,8 @@
             ).catch(
                 error => {
                     if (error.response){console.log(error.response.data);}
-                }
-                )}
+                })
+    }
     });
 
     calendar.render();

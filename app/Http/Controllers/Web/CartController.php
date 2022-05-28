@@ -18,23 +18,41 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
+        $cartItems = \Cart::getContent();
+        $tQuantity = '';
         $user_id = auth()->id();
+        $quantity = $request->quantity;
+        $p_id = $request->id;
+        $db_producto = Producto::select('quantity')->where('id', $p_id)->get();
+        $qt= $db_producto->implode('quantity',',') ;
+        //info('Stock actual del producto en la BD : ' . $qt);
 
-        if ($user_id){
-            \Cart::add([
-                'id' => $request->id,
-                'name' => $request->name,
-                'price' => $request->price,
-                'quantity' => $request->quantity,
-                'image' => $request->image,
-            ]);
+    foreach ($cartItems as $c){
+       // info('La cantidad es : ' . $c->quantity);
+        $tQuantity = $c->quantity;
+    }
 
-            session()->flash('success', 'Producto añadido');
-            return redirect()->route('cart.list');
+        if(!$qt < 1 && $tQuantity < $qt){
+
+            if ($user_id){
+                \Cart::add([
+                    'id' => $request->id,
+                    'name' => $request->name,
+                    'price' => $request->price,
+                    'quantity' => $request->quantity,
+                    'image' => $request->image,
+                ]);
+                session()->flash('success', 'Producto añadido');
+                return redirect()->route('cart.list');
+            }
+            else {
+                session()->flash('error', 'Usuario no identificado');
+                return redirect()->route('inicio');
+            }
         }
         else {
-            session()->flash('error', 'Usuario no identificado');
-            return redirect()->route('inicio');
+            session()->flash('error', 'No hay stock disponible');
+            return redirect()->route('productos');
         }
     }
 
@@ -42,15 +60,11 @@ class CartController extends Controller
     {
         $quantity = $request->quantity;
         $p_id = $request->id;
-
         $db_producto = Producto::select('quantity')->where('id', $p_id)->get();
         $qt= $db_producto->implode('quantity',',') ;
-        $q_producto= $qt - $quantity ;
-
         //info('Stock actual del producto en la BD : ' . $qt);
-        //info('Stock actual del producto segun cantidad de usuario: ' . $q_producto);
 
-        if ($q_producto > 0 && $quantity > 0){
+        if ($qt > 0 && $quantity <= $qt && $quantity > 0){
             \Cart::update(
                 $request->id,
                 [
@@ -64,9 +78,9 @@ class CartController extends Controller
             session()->flash('success', 'Articulo actualizado');
         }
 
-        else if ($quantity > $qt || $quantity <= 0){
+        else if ($quantity > $qt || $quantity < 1){
             //info('Cantidad introducida ('.$quantity.') no disponible para producto con id ' . $p_id);
-            session()->flash('error', 'Articulo no actualizada');
+            session()->flash('error', 'Articulo no actualizado');
         }
         return redirect()->route('cart.list');
     }

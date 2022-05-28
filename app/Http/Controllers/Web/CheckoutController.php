@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
+
     public function index()
     {
         $cartItems = \Cart::getContent();
@@ -22,17 +23,10 @@ class CheckoutController extends Controller
     {
         info($request);
 
-        // Cancelar compra
-        if ($request->input('cancel') === 'CANCELAR'){
-        info('Has cancelado la operacion');
-           return redirect()->route('cart.list');
-       }
-
         // Reglas de validación
         $request->validated();
 
        // Confirmar compra
-       if ($request->input('proceed') === 'PROCEDER'){
             info('Has procesado la  operacion');
 
             $cartItems = \Cart::getContent();
@@ -46,9 +40,6 @@ class CheckoutController extends Controller
                 $item->quantity;
                 $i_price = $item->price;
 
-            if ($i_name != 'ortopedica' && $i_name != 'traumatologica' &&
-                $i_name != 'deportiva' && $i_name != 'geriatrica'
-                && $i_name != 'neurologica'){
                // info('Entra en FALSE ' . $i_name);
                 Cesta::create([
                     'id' => $request->id,
@@ -89,10 +80,15 @@ class CheckoutController extends Controller
                         ->update(['quantity' => DB::raw($ff)]);
                 }
             }
-            }
+        \Cart::clear();
+        return view('web.finishCheckout');
+    }
 
-            \Cart::clear();
-            return view('web.finishCheckout');
-       }
+    public function finish(){
+
+        $fin  = true;
+
+        return $fin;
+
     }
 }

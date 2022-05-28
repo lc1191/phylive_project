@@ -17,7 +17,7 @@
 */
 .panel
 {
-    @apply absolute right-0 top-0 mr-6 mt-4
+    @apply absolute right-0 top-0 mr-10 mt-4
 }
 .imgLogo
 {
@@ -50,10 +50,8 @@
 
 /*
 *********************
-***** TERAPIAS ******
+***** ANIMACIONES ******
 *********************
-*/
-/* Animacion texto */
 
 /*LEFT TO CENTER*/
 @keyframes animatedtextL
@@ -104,6 +102,17 @@ animation: animatedtextR 1.5s;
 animation: animatedtextD 1.5s;
 }
 
+/* BOUNCE */
+@keyframes bouncer
+{
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.bounce
+{
+    animation: bouncer 1s;
+}
 
 /*
 *********************

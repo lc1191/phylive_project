@@ -10,7 +10,7 @@
 <main class="my-8 animatedL">
     <div class="container px-6 mx-auto">
         <div class="flex justify-center my-6">
-            <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
+            <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg md:w-4/5 lg:w-4/5">
                 <h3 class="text-3xl text-bold mb-4">Datos de usuario</h3>
                 <div class="flex-1">
                         <div class="form-group mb-3"> <!-- Nombre -->
@@ -94,7 +94,7 @@
 
     <div class="container px-6 mx-auto">
         <div class="flex justify-center my-6">
-            <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
+            <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg md:w-4/5 lg:w-4/5">
                 <h3 class="text-3xl text-bold mb-4">Datos de cesta</h3>
                     <div class="flex-1">
                         <table class="w-full text-sm lg:text-base" cellspacing="0">
@@ -120,8 +120,8 @@
                             </td>
                             <td class="ml-12 justify-center pt-10 md:justify-end md:flex">
                                 <div class="h-10 w-100">
-                                    <div class="relative flex flex-row w-full h-8">
-                                        <span class="w-full text-center bg-gray-100">{{ $item->quantity }}</span>
+                                    <div class="relative flex flex-row w-full">
+                                        <span class="w-full mr-6 px-2 text-center bg-slate-100">{{ $item->quantity }}</span>
                                     </div>
                                 </div>
                             </td>
@@ -140,52 +140,37 @@
         {{-- Datos de pago --}}
         <div class="container px-6 mx-auto">
             <div class="flex justify-center my-6">
-                <div class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
+                <div id="divCard" class="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg md:w-4/5 lg:w-4/5">
                     <h3 class="text-3xl text-bold mb-4">Datos de pago</h3>
                     <div class="flex-1">
                         <div class="my-2">
-                            <input type="radio" class="btn-check" name="pay" id="option1" autocomplete="off" value="Clínica" checked>
-                            <label class="btn btn-primary" for="option1">Clínica</label>
+                            <input type="radio" class="btn-check" name="pay" id="option1" autocomplete="off" value="Clínica">
+                            <label class="btn btn-primary py-4" for="option1">Clínica</label>
                         </div>
-                        <div class="mb-4">
-                            <input type="radio" class="btn-check" name="pay" id="option2" autocomplete="off" value="Tarjeta">
-                            <label class="btn btn-primary" for="option2">Tarjeta</label>
+                        <div class="mb-3">
+                            <input type="radio" class="btn-check" name="pay" id="option2" autocomplete="off" value="Tarjeta" checked>
+                            <label class="btn btn-primary py-4" for="option2">Tarjeta</label>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" name="card_number" placeholder="Introduzca numero de tarjeta" id="card_number"/>
+                        <div id="listAll" class="classList flex flex-col justify-center items-center pt-4">
+                            <div class="mb-3">
+                                <input type="text" class="" style="width: 300px;" name="card_number" placeholder="Numero de tarjeta" id="card_number"/>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-3 col-sm-3 col-xs-3">
-                                <span class="help-block text-muted small-font" > Mes exp.</span>
-                                <input type="text" class="form-control" name="card_ex_month" placeholder="MM" id="card_ex_month" maxlength="5"/>
+                            <div class="mb-3 flex">
+                                <input type="text" class="" style="width: 100px;"name="card_ex_month" placeholder="Mes cad." id="card_ex_month" maxlength="5"/>
+                                <input type="text" class="" style="width: 100px;"name="card_ex_year" placeholder="Año cad." id="card_ex_year" maxlength="5"/>
+                                <input type="text" class="" style="width: 100px;"name="card_ccv" placeholder="CCV cod." id="card_ccv" maxlength="3"/>
                             </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3 mb-3">
-                            <span class="help-block text-muted small-font" > Año exp.</span>
-                            <input type="text" class="form-control" name="card_ex_year" placeholder="YY" id="card_ex_year" maxlength="5"/>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3 mb-3">
-                            <span class="help-block text-muted small-font" > Código CCV</span>
-                            <input type="text" class="form-control" name="card_ccv" placeholder="CCV" id="card_ccv" maxlength="3"/>
-                        </div>
-                        </div>
-                            <div class="row mb-3">
-                            <div class="col-md-12 pad-adjust">
-                                <input type="text" class="form-control" name="card_title" placeholder="Titular de tarjeta" id="card_title"/>
+                            <div class="mb-3">
+                                <input type="text" class="" style="width: 300px;" name="card_title" placeholder="Titular de tarjeta" id="card_title"/>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="py-3 col-sm-4 col-xs-1 pad-adjust">
-                                <input type="submit"  class="px-5 btn btn-danger" name="cancel" value="CANCELAR" />
-                            </div>
-                        <div class="py-3 col-sm-4 col-xs-1 pad-adjust">
-                            <input type="submit"  class="px-5 btn btn-success btn-block" name="proceed" value="PROCEDER" />
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="flex flex-col justify-center items-center" >
+            <button class="w-64 mt-4 px-6 py-4 text-white btn btn-danger" name="cancel" onclick="history.go(-1)" >Cancelar</button>
+            <button type="submit" class="w-64 mt-4 px-6 py-4 text-white btn btn-success" name="proceed" >Proceder</button>
         </div>
     </form>
 </main>

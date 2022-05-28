@@ -5,6 +5,12 @@
 
 <table>
     <tr>
+        <td>__________Informacion de Usuario__________<br></td>
+    </tr>
+    <tr>
+        <td><br></td>
+    </tr>
+    <tr>
         <td>ID</td>
         <td>{{$cesta->user_id}}</td>
     </tr>
@@ -29,6 +35,15 @@
         <td>{{$cesta->phone}}</td>
     </tr>
     <tr>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>__________Informacion de Artículo__________</td>
+    </tr>
+    <tr>
+        <td><br></td>
+    </tr>
+    <tr>
         <td>ID Cesta</td>
         <td>{{$cesta->id}}</td>
     </tr>
@@ -45,12 +60,25 @@
         <td>{{$cesta->quantity}} Unidades</td>
     </tr>
     <tr>
-        <td>Fecha compra</td>
-        <td>{{$cesta->updated_at}}</td>
+        <td>Hora de compra</td>
+        <td>{{date('H:m:s', strtotime($cesta->updated_at))}}</td>
+    </tr>
+    <tr>
+        <td>Fecha de compra</td>
+        <td>{{date('d-m-Y', strtotime($cesta->updated_at))}}</td>
+    </tr>
+    <tr>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>__________Informacion de Pago__________</td>
+    </tr>
+    <tr>
+        <td><br></td>
     </tr>
     <tr>
         <td>Metodo de pago</td>
-        <td>{{$cesta->pay}}</td>
+        <td><b>{{$cesta->pay}}</b></td>
     </tr>
     <tr>
         <td>Titular de tarjeta</td>

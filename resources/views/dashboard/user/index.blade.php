@@ -22,7 +22,7 @@
                     <td>{{ $u->id }}</td>
                     <td>{{ $u->name }}</td>
                     <td>{{ $u->last_name }}</td>
-                    <td>{{ $u->created_at }}</td>
+                    <td>{{ date('d-m-Y', strtotime($u->created_at)) }}</td>
                     <td>
                         <form action="{{ route('user.destroy', $u) }}" method="post">
                             <a class="btn btn-primary my-1" href="{{ route('user.show', $u) }}">Mostrar</a>

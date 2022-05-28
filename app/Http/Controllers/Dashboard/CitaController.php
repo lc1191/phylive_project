@@ -33,31 +33,6 @@ class CitaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Cita  $cita
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Cita $cita)
-    {
-        echo view('dashboard.cita.edit', compact('cita'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cita  $cita
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Cita $cita)
-    {
-        $data = $request->validated();
-        $cita->update($data);
-        return to_route("cita.index")->with('status', 'Registro actualizado.');
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Cita  $cita
@@ -68,6 +43,5 @@ class CitaController extends Controller
         $cita->delete();
         return to_route("cita.index")->with('status', 'Registro eliminado.');
     }
-
 
 }

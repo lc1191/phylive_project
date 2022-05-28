@@ -21,8 +21,12 @@
         <td>{{$user->email}}</td>
     </tr>
     <tr>
+        <td>Hora de creación</td>
+        <td>{{date('H:m:s', strtotime($user->created_at))}}</td>
+    </tr>
+    <tr>
         <td>Fecha de creación</td>
-        <td>{{$user->created_at}}</td>
+        <td>{{date('d-m-Y', strtotime($user->created_at))}}</td>
     </tr>
 </table>
 

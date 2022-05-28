@@ -77,7 +77,7 @@
                         <!--Descripción-->
                         <div class="form-group">
                             <label for="description">Descripción</label>
-                            <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="2"></textarea>
                             <small id="helpId" class="form-text text-muted">Indica dolor</small>
                         </div>
 
@@ -91,8 +91,6 @@
                         <!--Hora-->
                         <div class="form-group">
                             <label for="end">Hora</label>
-                            {{-- <input type="time" class="form-control" name="end" id="end" aria-describedby="helpId"> --}}
-
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="end" id="16" value="16"
                                 aria-describedby="helpId">
@@ -139,4 +137,5 @@
     </div>
 
     {{-- SCRIPT QUE LEEA SI CADA ID DE HORA --}}
+
 @endsection

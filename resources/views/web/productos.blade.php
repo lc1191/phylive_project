@@ -5,7 +5,18 @@
 @endsection
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="p-4 mb-3 bg-green-600 rounded">
+            <p class="text-white text-center">{{ $message }}</p>
+        </div>
+    @endif
+    @if ($message = Session::get('error'))
+        <div class="p-4 mb-3 bg-red-600 rounded bounce">
+            <p class="text-white text-center">{{ $message }}</p>
+        </div>
+    @endif
 
+<main class="container">
     <table class="table mb-3">
         <thead>
             <tr>
@@ -39,7 +50,7 @@
             @endforeach
         </tbody>
     </table>
-
+</main>
     {{ $productos->links() }}
 
 @endsection
