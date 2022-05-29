@@ -39,22 +39,22 @@
             },
         }],
 
-        dateClick:function(info){
-            $('#btnGuardar').prop("disabled",false);
-            $('#btnModificar').prop("disabled",true);
-            $('#btnEliminar').prop("disabled",true);
+    dateClick:function(info){
+        $('#btnGuardar').prop("disabled",false);
+        $('#btnModificar').prop("disabled",true);
+        $('#btnEliminar').prop("disabled",true);
 
-            formulario.reset();
-            formulario.start.value=info.dateStr;
-            formulario.end.value=info.dateStr;
-            $("#cita").modal("show");
-            // console.log(formulario.start.value);
-            // console.log(formulario.end.value);
-        },
+        formulario.reset();
+        formulario.start.value=info.dateStr;
+        // formulario.end.value=info.dateStr;
+        $("#cita").modal("show");
+        // console.log(formulario.start.value);
+        // console.log(formulario.end.value);
+    },
 
     eventClick:function (info) {
         var cita = info.event;
-
+        console.log(cita);
         $('#btnGuardar').prop("disabled",true);
         $('#btnModificar').prop("disabled",false);
         $('#btnEliminar').prop("disabled",false);
@@ -62,7 +62,7 @@
         /*
         * Consultar datos
         */
-       axios.post(baseURL+"/cita/editar/" + info.event.id)
+       axios.post(baseURL+"/cita/editar/" + info.event.id).
        then(
            (respuesta) => {
                formulario.id.value = respuesta.data.id;
@@ -72,12 +72,12 @@
                formulario.end.value = respuesta.data.end;
                $("#cita").modal("show");
             }
-            ).catch(
-                error => {
-                    if (error.response){console.log(error.response.data);}
-                })
+        ).catch(
+            error => {
+                if (error.response){console.log(error.response.data);}
+        })
     }
-    });
+});
 
     calendar.render();
 
