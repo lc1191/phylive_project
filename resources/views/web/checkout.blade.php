@@ -112,7 +112,7 @@
                         <tr>
                             {{-- Imagen de producto --}}
                             <td class="hidden pb-4 md:table-cell">
-                                <a href="#"><img class="mx-auto w-20 rounded" src="{{Storage::url("image/$item->image")}}"></a>
+                                <a href="#"><img class="mx-auto w-20 rounded" src="{{("img/upload/$item->image")}}"></a>
                             </td>
                             {{-- Nombre de producto --}}
                             <td>

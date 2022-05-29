@@ -40,7 +40,7 @@
                                         {{-- Imagen producto --}}
                                         <td class="hidden pb-4 md:table-cell">
                                             <img class="mx-auto w-20 rounded mt-6 "
-                                                src="{{ Storage::url("image/$item->image") }}">
+                                                src="{{("img/upload/$item->image") }}">
                                         </td>
                                         {{-- Nombre producto --}}
                                         <td>
