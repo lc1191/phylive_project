@@ -31,7 +31,7 @@
         <tbody>
             @foreach ($productos as $p)
             <tr>
-                <td><img class="mx-auto w-44" src="{{("panel/producto/image/$p->image")}}"/></td>
+                <td><img class="mx-auto w-44" src="{{("img/upload/$p->image")}}"/></td>
                 <td>{{$p->title}}</td>
                 <td>{{$p->description}}</td>
                 <td>{{$p->price}},00 €</td>

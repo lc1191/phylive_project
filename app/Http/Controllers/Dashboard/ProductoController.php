@@ -48,7 +48,7 @@ class ProductoController extends Controller
             $data["image"] = $filename = time()."".$data["image"]->extension();
 
             //Mover archivo a los discos de laravel
-            $request->image->move(public_path("panel/producto/image"),$filename);
+            $request->image->move(public_path("img/upload"),$filename);
         }
 
         Producto::create($data);
@@ -91,7 +91,7 @@ class ProductoController extends Controller
             $data["image"] = $filename = time()."".$data["image"]->extension();
 
         //Mover archivo a los discos de laravel
-        $request->image->move(public_path("panel/producto/image"),$filename);
+        $request->image->move(public_path("img/upload"),$filename);
         }
 
         $producto->update($data);

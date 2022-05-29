@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td>Imagen</td>
-        <td class="pt-4"><img src="{{("image/$producto->image")}}" max-width="250"/></td>
+        <td class="pt-4"><img src="{{URL::to("/img/upload/$producto->image")}}" max-width="250"/></td>
     </tr>
 
 </table>
