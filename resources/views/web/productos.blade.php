@@ -50,7 +50,7 @@
             @endforeach
         </tbody>
     </table>
-</main>
     {{ $productos->links() }}
+</main>
 
 @endsection

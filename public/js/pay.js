@@ -32,7 +32,7 @@
         var regMonth = /^01|02|03|04|05|06|07|08|09|10|11|12$/;
         var regYear = /^18|19|20|21|22|23|24|25|26|27|28|29|30$/;
         var regCVV = /^[0-9]{3,3}$/;
-        var regTitle = /^[a-z ñ,.'-]+$/;
+        var regTitle = /^[a-zA-Z]+$/;
 
         if (card.checked) {
             //alert('Has seleccionado tarjeta');
@@ -57,11 +57,11 @@
                 setTimeout(function(){c4.focus();}, 1);
                 hasError = true;
             }
-            if (!regTitle.test(c5.value)){
-                alert('Nombre de titular de tarjeta inválido');
-                setTimeout(function(){c5.focus();}, 1);
-                hasError = true;
-            }
+            // if (!regTitle.test(c5.value)){
+            //     alert('Nombre de titular de tarjeta inválido');
+            //     setTimeout(function(){c5.focus();}, 1);
+            //     hasError = true;
+            // }
     }
 
     // Si existe algún error no procede el pago
