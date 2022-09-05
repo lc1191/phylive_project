@@ -26,8 +26,9 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
-                <h5 class="text-white mb-3 pl-1">{{ Auth::user()->name }}</h5>
-
+                <div class="flex justify-center">
+                    <h5 class="text-white mb-3">{{ Auth::user()->name }}</h5>
+                </div>
                 {{-- Icono desconexion --}}
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

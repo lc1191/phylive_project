@@ -17,6 +17,7 @@
     @endif
 
 <main class="container">
+
     <table class="table mb-3">
         <thead>
             <tr>

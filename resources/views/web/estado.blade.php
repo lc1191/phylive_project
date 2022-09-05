@@ -1,5 +1,5 @@
 @if ($cestaCount>0)
-    <spann class="badge badge-light">{{$cestaCount}}</spann>
+    <span class="badge badge-light">{{$cestaCount}}</span>
 @else
-    <spann class="badge badge-light">0</spann>
+    <span class="badge badge-light">0</span>
 @endif
