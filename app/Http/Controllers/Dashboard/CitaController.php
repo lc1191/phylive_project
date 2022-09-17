@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-//Clases Laravel
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-//Clases proyecto;
 use App\Models\Cita;
 
 class CitaController extends Controller

@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Producto;
 
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreRequest extends FormRequest
@@ -16,6 +18,14 @@ class StoreRequest extends FormRequest
         "quantity" => "required|min:1|max:100",
         "image" => "mimes:jpeg,jpg,png|max:10240"
         ];
+    }
+
+    public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        if($this->expectsJson()) {
+            $response = new Response($validator->errors(),422);
+            throw new ValidationException($validator, response());
+        }
     }
 
     /**

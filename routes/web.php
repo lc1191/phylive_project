@@ -61,6 +61,11 @@ Route::group(['prefix' => '/', 'middleware' => ['auth', 'regular']], function ()
     Route::post('/cita/editar/{id}', [App\Http\Controllers\Web\CitasController::class, 'edit']);
     Route::post('/cita/actualizar/{cita}', [App\Http\Controllers\Web\CitasController::class, 'update']);
     Route::post('/cita/borrar/{id}', [App\Http\Controllers\Web\CitasController::class, 'destroy']);
+    //Ruta vue
+    Route::get('/vue', function () {
+        return view('vue');
+    });
 });
 
 require __DIR__.'/auth.php';
+

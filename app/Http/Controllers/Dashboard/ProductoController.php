@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-//Clases Laravel
+
 use App\Http\Controllers\Controller;
-//Clases proyecto
 use App\Http\Requests\Producto\PutRequest;
 use App\Http\Requests\Producto\StoreRequest;
 use App\Models\Producto;
